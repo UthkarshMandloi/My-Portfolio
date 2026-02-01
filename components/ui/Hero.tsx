@@ -50,7 +50,7 @@ export default function Hero({ profile }: { profile: any }) {
         transition={{ duration: 0.8 }}
         className="text-[15vw] leading-none font-black text-[#1a1a1a] tracking-tighter select-none z-10 absolute top-[12%] md:top-[8%]"
       >
-        CREATIVE
+        EXPLORER
       </motion.h1>
 
       {/* 2. IMAGE (Middle Layer) */}
