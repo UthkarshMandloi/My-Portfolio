@@ -6,6 +6,7 @@ import HUDOverlay from "@/components/ui/HUDOverlay";
 import PageWrapper from "@/components/PageWrapper"; // <--- Import Wrapper
 
 export const revalidate = 10;
+export const dynamic = 'force-dynamic'; // Fixes production caching issue
 
 async function getProfile() {
   const query = `*[_type == "profile"][0]`;
@@ -24,7 +25,7 @@ export default async function Home() {
   return (
     // Wrap EVERYTHING in PageWrapper
     <PageWrapper>
-      <main className="min-h-screen bg-neutral-950 text-white relative overflow-x-hidden selection:bg-white selection:text-black">
+      <main className="min-h-screen text-white relative z-10 w-full selection:bg-white selection:text-black bg-transparent">
         
         <HUDOverlay />
         <Hero profile={profile} />
@@ -45,7 +46,7 @@ export default async function Home() {
                 key={project._id}
                 title={project.title}
                 description={project.summary}
-                image={project.image ? urlFor(project.image).width(800).url() : ""}
+                image={project.image ? urlFor(project.image).width(800).url() : `https://opengraph.githubassets.com/1/UthkarshMandloi/${project.title.replace(/ /g, "-")}`}
                 tech={project.technologies || []}
                 link={project.link || project.github}
               />

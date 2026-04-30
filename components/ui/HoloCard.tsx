@@ -24,7 +24,8 @@ interface HoloCardProps {
 
 export default function HoloCard({ title, description, image, tech, link }: HoloCardProps) {
   return (
-    <Tilt options={defaultOptions} className="relative w-full h-[400px] rounded-xl overflow-hidden group cursor-pointer">
+    <a href={link} target="_blank" rel="noopener noreferrer" className="block w-full h-[400px]">
+      <Tilt options={defaultOptions} className="relative w-full h-full rounded-xl overflow-hidden group cursor-pointer">
       {/* 1. The Glass Container */}
       <div className="absolute inset-0 bg-neutral-900/40 backdrop-blur-md border border-white/10 rounded-xl z-10 shadow-xl transition-all duration-300 group-hover:border-neon-cyan/50">
         
@@ -70,5 +71,6 @@ export default function HoloCard({ title, description, image, tech, link }: Holo
         <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-white/10 rounded-br-xl group-hover:border-neon-purple/50 transition-colors" />
       </div>
     </Tilt>
+    </a>
   );
 }

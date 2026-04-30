@@ -37,7 +37,7 @@ export default function Hero({ profile }: { profile: any }) {
   if (!profile) return null;
 
   return (
-    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-10 bg-[#0a0a0a]">
+    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden pt-10 bg-transparent">
       
       {/* BACKGROUND LAYERS */}
       <Marquee />
@@ -48,7 +48,7 @@ export default function Hero({ profile }: { profile: any }) {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-[15vw] leading-none font-black text-[#1a1a1a] tracking-tighter select-none z-10 absolute top-[12%] md:top-[8%]"
+        className="text-[15vw] leading-none font-black text-white mix-blend-difference tracking-tighter select-none z-10 absolute top-[12%] md:top-[8%] opacity-30"
       >
         EXPLORER
       </motion.h1>
@@ -94,9 +94,9 @@ export default function Hero({ profile }: { profile: any }) {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.8 }}
-        className="text-[15vw] leading-none font-black tracking-tighter select-none z-30 absolute bottom-[15%] md:bottom-[10%] text-transparent pointer-events-none"
+        className="text-[15vw] leading-none font-black tracking-tighter select-none z-30 absolute bottom-[15%] md:bottom-[10%] text-transparent pointer-events-none mix-blend-difference"
         style={{ 
-          WebkitTextStroke: "2px rgba(255, 255, 255, 0.4)", 
+          WebkitTextStroke: "2px rgba(255, 255, 255, 0.8)", 
         }}
       >
         DEVELOPER
