@@ -84,8 +84,8 @@ export default async function Home() {
             "@context": "https://schema.org",
             "@type": "Person",
             name: profile?.name || "Uthkarsh Mandloi",
-            url: "https://uthkarshmandloi.vercel.app",
-            image: "https://uthkarshmandloi.vercel.app/og-image.png",
+            url: "https://uthkarshmandloi.in",
+            image: "https://uthkarshmandloi.in/og-image.png",
             jobTitle: profile?.headline || "Creative Engineer & Designer",
             description:
               "Computer Engineering student, Robotics lead, Next.js & AI developer based in Indore, India.",

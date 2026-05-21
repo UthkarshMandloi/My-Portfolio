@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/studio/", "/api/"],
       },
     ],
-    sitemap: "https://uthkarshmandloi.vercel.app/sitemap.xml",
-    host: "https://uthkarshmandloi.vercel.app",
+    sitemap: "https://uthkarshmandloi.in/sitemap.xml",
+    host: "https://uthkarshmandloi.in",
   };
 }

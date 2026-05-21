@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { client } from "@/lib/client";
 
-const BASE_URL = "https://uthkarshmandloi.vercel.app";
+const BASE_URL = "https://uthkarshmandloi.in";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Fetch all project slugs/IDs from Sanity for dynamic routes
