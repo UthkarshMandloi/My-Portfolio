@@ -76,6 +76,45 @@ export default async function Home() {
 
   return (
     <PageWrapper>
+      {/* JSON-LD Structured Data — Person schema for Google rich results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: profile?.name || "Uthkarsh Mandloi",
+            url: "https://uthkarshmandloi.vercel.app",
+            image: "https://uthkarshmandloi.vercel.app/og-image.png",
+            jobTitle: profile?.headline || "Creative Engineer & Designer",
+            description:
+              "Computer Engineering student, Robotics lead, Next.js & AI developer based in Indore, India.",
+            email: profile?.email || "uthkarshmandloi@gmail.com",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Indore",
+              addressRegion: "Madhya Pradesh",
+              addressCountry: "IN",
+            },
+            sameAs: [
+              "https://github.com/UthkarshMandloi",
+              "https://linkedin.com/in/uthkarshmandloi",
+              "https://instagram.com/uthkarshmandloi",
+            ],
+            knowsAbout: [
+              "Robotics",
+              "Next.js",
+              "React",
+              "Artificial Intelligence",
+              "Embedded Systems",
+              "Web Development",
+              "Three.js",
+              "Computer Engineering",
+            ],
+          }),
+        }}
+      />
+
       {/* 1. Mount the Scroll Theme Controller */}
       <ThemeScrollController />
       
