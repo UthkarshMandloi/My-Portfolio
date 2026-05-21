@@ -1,12 +1,23 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { urlFor } from "@/lib/image";
 
+interface Project {
+  _id: string;
+  title: string;
+  summary?: string;
+  technologies?: string[];
+  link?: string;
+  github?: string;
+  image?: unknown;
+  isFeatured?: boolean;
+  [key: string]: unknown;
+}
+
 interface ProjectsArchiveProps {
-  initialProjects: any[];
+  initialProjects: Project[];
 }
 
 const colorPalettes = [
@@ -287,7 +298,7 @@ export default function ProjectsArchive({ initialProjects }: ProjectsArchiveProp
                     {/* Meta Section */}
                     <div className="flex items-center justify-between font-mono text-[9px] font-black uppercase opacity-85">
                       <span>BUILD SUCCESSFUL</span>
-                      <span>// 2026</span>
+                      <span>{'// 2026'}</span>
                     </div>
 
                     {/* Title */}

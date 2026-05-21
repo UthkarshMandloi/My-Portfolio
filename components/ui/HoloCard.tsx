@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Tilt } from "react-tilt";
 
 const tiltOptions = {
@@ -39,12 +40,13 @@ export default function HoloCard({ title, description, image, tech, link }: Holo
             
             {/* Elegant Image Area with Smooth Zoom Hover */}
             <div className="w-full h-44 bg-[var(--theme-bg-color)]/30 rounded-xl mb-6 overflow-hidden border border-[var(--theme-border-color)] relative theme-transition">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               {image ? (
-                <img 
-                  src={image} 
-                  alt={title} 
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out" 
+                <Image
+                  src={image}
+                  alt={title}
+                  fill
+                  className="object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               ) : (
                 <div className="w-full h-full bg-neutral-800 animate-pulse" />

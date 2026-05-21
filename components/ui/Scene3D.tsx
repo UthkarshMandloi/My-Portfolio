@@ -243,7 +243,7 @@ function InteractiveParticles({ isDark, wireframeColor }: InteractiveParticlesPr
     targetWireframeColor.current.set(wireframeColor);
   }, [wireframeColor]);
 
-  useFrame((state: any) => {
+  useFrame((state: import("@react-three/fiber").RootState) => {
     if (groupRef.current) {
       // Slow rotation
       groupRef.current.rotation.y = state.clock.elapsedTime * 0.04;
