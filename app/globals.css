@@ -1,5 +1,83 @@
 @import "tailwindcss";
 
+@property --theme-bg-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #050505;
+}
+@property --theme-text-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #ffffff;
+}
+@property --theme-text-muted {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #a3a3a3;
+}
+@property --theme-border-color {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(255, 255, 255, 0.05);
+}
+@property --theme-card-bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(0, 0, 0, 0.3);
+}
+@property --theme-card-hover-bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(255, 255, 255, 0.05);
+}
+@property --theme-badge-bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: rgba(255, 255, 255, 0.05);
+}
+@property --theme-badge-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #d4d4d4;
+}
+
+:root {
+  --theme-bg-color: #050505;
+  --theme-text-color: #ffffff;
+  --theme-text-muted: #a3a3a3;
+  --theme-border-color: rgba(255, 255, 255, 0.05);
+  --theme-card-bg: rgba(0, 0, 0, 0.3);
+  --theme-card-hover-bg: rgba(255, 255, 255, 0.05);
+  --theme-badge-bg: rgba(255, 255, 255, 0.05);
+  --theme-badge-text: #d4d4d4;
+
+  /* Enable smooth, high-fidelity browser interpolation for the variables themselves */
+  transition: --theme-bg-color 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              --theme-text-color 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              --theme-text-muted 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              --theme-border-color 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              --theme-card-bg 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              --theme-card-hover-bg 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              --theme-badge-bg 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              --theme-badge-text 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+*, *::before, *::after {
+  cursor: none !important;
+}
+
 body {
-  cursor: none;
+  background-color: var(--theme-bg-color);
+  color: var(--theme-text-color);
+}
+
+/* Highly optimized premium transitions for theme morphs */
+.theme-transition {
+  transition: background-color 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              color 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              border-color 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              fill 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              stroke 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }

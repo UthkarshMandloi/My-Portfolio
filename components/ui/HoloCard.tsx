@@ -1,76 +1,95 @@
 "use client";
-import { Tilt } from 'react-tilt';
-import { motion } from 'framer-motion';
 
-const defaultOptions = {
-    reverse:        false,  
-    max:            15,     
-    perspective:    1000,   
-    scale:          1.02,   
-    speed:          1000,   
-    transition:     true,   
-    axis:           null,   
-    reset:          true,   
-    easing:         "cubic-bezier(.03,.98,.52,.99)",    
-}
+import { Tilt } from "react-tilt";
+
+const tiltOptions = {
+  reverse: false,
+  max: 8, // Subtle tilt for a premium, non-gimmicky feel
+  perspective: 1000,
+  scale: 1.015,
+  speed: 800,
+  transition: true,
+  axis: null,
+  reset: true,
+  easing: "cubic-bezier(.03,.98,.52,.99)",
+};
 
 interface HoloCardProps {
-    title: string;
-    description: string;
-    image: string;
-    tech: string[];
-    link: string;
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  link: string;
 }
 
 export default function HoloCard({ title, description, image, tech, link }: HoloCardProps) {
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer" className="block w-full h-[400px]">
-      <Tilt options={defaultOptions} className="relative w-full h-full rounded-xl overflow-hidden group cursor-pointer">
-      {/* 1. The Glass Container */}
-      <div className="absolute inset-0 bg-neutral-900/40 backdrop-blur-md border border-white/10 rounded-xl z-10 shadow-xl transition-all duration-300 group-hover:border-neon-cyan/50">
-        
-        {/* 2. The Holographic Gradient Overlay (Visible on hover) */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500 bg-gradient-to-tr from-transparent via-neon-purple to-neon-cyan z-20 pointer-events-none mix-blend-overlay" />
-        
-        {/* 3. Card Content */}
-        <div className="relative z-30 p-6 flex flex-col h-full text-white font-mono">
-          {/* Top Decor */}
-          <div className="flex justify-between items-start mb-4 opacity-50 text-[10px] tracking-widest">
-             <span>PROJECT_ID_01</span>
-             <div className="flex gap-1">
-                <div className="w-2 h-2 rounded-full bg-red-500" />
-                <div className="w-2 h-2 rounded-full bg-yellow-500" />
-                <div className="w-2 h-2 rounded-full bg-green-500" />
-             </div>
-          </div>
+    <a 
+      href={link} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="block w-full h-[430px] group pointer-events-auto select-none"
+    >
+      <Tilt options={tiltOptions} className="relative w-full h-full rounded-2xl overflow-hidden cursor-pointer">
+        {/* Sleek Glassmorphic Container with Premium Border Transitions */}
+        <div className="absolute inset-0 bg-[var(--theme-card-bg)] backdrop-blur-md border border-[var(--theme-border-color)] rounded-2xl z-10 shadow-2xl transition-all duration-[800ms] group-hover:border-[var(--theme-text-muted)] group-hover:bg-[var(--theme-card-hover-bg)] theme-transition">
+          
+          {/* Main Card Content */}
+          <div className="relative z-30 p-6 flex flex-col h-full text-[var(--theme-text-color)] theme-transition">
+            
+            {/* Elegant Image Area with Smooth Zoom Hover */}
+            <div className="w-full h-44 bg-[var(--theme-bg-color)]/30 rounded-xl mb-6 overflow-hidden border border-[var(--theme-border-color)] relative theme-transition">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {image ? (
+                <img 
+                  src={image} 
+                  alt={title} 
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out" 
+                />
+              ) : (
+                <div className="w-full h-full bg-neutral-800 animate-pulse" />
+              )}
+              
+              {/* Subtle overlay gradient on image */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--theme-bg-color)]/80 via-transparent to-transparent opacity-60 pointer-events-none theme-transition" />
+            </div>
 
-          {/* Image Area */}
-          <div className="w-full h-40 bg-black/50 rounded-lg mb-4 overflow-hidden border border-white/5 relative">
-             {image && <img src={image} alt={title} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />}
-          </div>
+            {/* Typography Section */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-sans font-semibold tracking-widest text-[var(--theme-text-muted)] uppercase theme-transition">
+                  Case Study
+                </span>
+                <div className="w-1.5 h-1.5 rounded-full bg-[var(--theme-text-muted)]/40 group-hover:bg-[var(--theme-text-color)] transition-colors duration-300 theme-transition" />
+              </div>
+              
+              <h3 className="text-xl font-bold tracking-tight text-[var(--theme-text-color)] font-sans transition-colors duration-300 theme-transition">
+                {title}
+              </h3>
+              
+              <p className="text-xs text-[var(--theme-text-muted)] font-normal leading-relaxed line-clamp-3 pt-1 theme-transition">
+                {description}
+              </p>
+            </div>
 
-          {/* Text Info */}
-          <h2 className="text-xl font-bold uppercase tracking-wide group-hover:text-neon-cyan transition-colors">
-            {title}
-          </h2>
-          <p className="text-xs text-gray-400 mt-2 line-clamp-3 leading-relaxed">
-            {description}
-          </p>
-
-          {/* Tech Stack Tags */}
-          <div className="mt-auto flex flex-wrap gap-2 pt-4">
-            {tech.map((t) => (
-              <span key={t} className="px-2 py-1 text-[9px] uppercase tracking-wider bg-white/5 border border-white/10 rounded-sm text-gray-300">
-                {t}
-              </span>
-            ))}
+            {/* Clean, Non-Cluttered Tech Tags */}
+            <div className="mt-auto flex flex-wrap gap-2 pt-4">
+              {tech.slice(0, 4).map((t) => (
+                <span 
+                  key={t} 
+                  className="px-2.5 py-1 text-[9px] font-mono uppercase tracking-wider bg-[var(--theme-badge-bg)] border border-[var(--theme-border-color)] rounded-md text-[var(--theme-badge-text)] font-semibold group-hover:border-[var(--theme-text-muted)] transition-all duration-300 theme-transition"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+            
           </div>
+          
+          {/* Subtle Hover Ambient Glow (Monochrome white/dynamic) */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 bg-radial-gradient from-[var(--theme-text-color)]/20 via-transparent to-transparent z-20 pointer-events-none theme-transition" />
         </div>
-        
-        {/* 4. Decorative Cyberpunk Lines */}
-        <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-white/10 rounded-br-xl group-hover:border-neon-purple/50 transition-colors" />
-      </div>
-    </Tilt>
+      </Tilt>
     </a>
   );
 }
